@@ -6,10 +6,10 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Database Schema Design 🔗</strong></a>
+    <a href="https://drawsql.app/teams/kennielarkson-team/diagrams/hng11-aphka"><strong>Database Schema Design 🔗</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">Endpoints Docummentation 🔗</a>
+    <a href="https://openapi-server.vercel.app/docs">Endpoints Docummentation 🔗</a>
     
   </p>
 </div>
@@ -27,6 +27,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+     <li><a href="#architecture-overview">Architecture Overview</a></li>
     <li><a href="#folder-structure">Folder Structure</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -97,6 +98,29 @@ There are many great README templates available on GitHub; however, I didn't fin
 |--- tsconfig.json
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## _Architecture Overview_
+
+The application is structured into three distinct layers:
+
+### 1. Presentation Layer
+  - handles external communication with various systems, including APIs, UI components, and HTTP/S requests.
+
+### 2. Domain Layer
+ -  encapsulates the core business rules, entities, data transfer objects (DTOs), validation logic, and use cases.
+
+### 3. Infrastructure Layer
+
+ - deals with external services and technical details.
+
+#### Additionally:
+
+ - The application follows the Vertical Slice technique, where each major feature or use case has its own dedicated folder structure.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -178,6 +202,24 @@ Contributions are welcomed! NOTE: For major changes, please open an issue first 
 3. Commit your Changes (`git commit -m 'Fixed a typo in the README file'`)
 4. Push to the Branch (`git push origin fix/typoReadme`)
 5. Open a Pull Request
+
+
+<!-- COMMIT CHEATSHEET -->
+
+### _Commit CheatSheet_
+
+| Type     |                          | Description                                                                                                 |
+| -------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| feat     | Features                 | A new feature                                                                                               |
+| fix      | Bug Fixes                | A bug fix                                                                                                   |
+| docs     | Documentation            | Documentation only changes                                                                                  |
+| refactor | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                                   |
+| perf     | Performance Improvements | A code change that improves performance                                                                     |
+| test     | Tests                    | Adding missing tests or correcting existing tests                                                           |
+| build    | Builds                   | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
+| ci       | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
+| chore    | Chores                   | Other changes that don't modify , backend or test files                                                     |
+| revert   | Reverts                  | Reverts a previous commit                                                                                   
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
