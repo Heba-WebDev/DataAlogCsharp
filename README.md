@@ -1,258 +1,96 @@
+### Description
 
-<br />
-<div align="center">
-<a name="readme-top"></a>
-  <h3 align="center">Welcome to APHKA API boilerplate 👷</h3>
+Create an API endpoint to handle the deletion of an organization. This endpoint will validate the organization ID and remove the specified organization from the system upon successful validation.
 
-  <p align="center">
-    <br />
-    <a href="https://drawsql.app/teams/kennielarkson-team/diagrams/hng11-aphka"><strong>Database Schema Design 🔗</strong></a>
-    <br />
-    <br />
-    <a href="https://openapi-server.vercel.app/docs">Endpoints Docummentation 🔗</a>
-    
-  </p>
-</div>
+### Acceptance Criteria
 
-<br />
-<br />
+#### API Endpoint Implementation:
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-     <li><a href="#architecture-overview">Architecture Overview</a></li>
-    <li><a href="#folder-structure">Folder Structure</a></li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+- The endpoint should be accessible at `/api/organizations`.
+- The endpoint should accept HTTP DELETE requests.
+- The endpoint should be protected and require authentication.
 
+#### Data Validation and Sanitization:
 
+- The API should validate the request payload to ensure the organization ID is present and valid.
+- The organization ID should be checked for correctness and validity (e.g., it exists in the system).
+- The API should verify that the authenticated user is the owner of the organization.
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+#### Deleting Organization:
 
-This repository is meant to be used as a baseline for any express API. The core features shared across most modern applicaitons are addressed. 
+- Upon successful validation of the organization ID, the organization should be removed from the system.
+- All related data should be handled according to the defined data retention policy.
 
+#### Response:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- On success, the API should return a 204 No Content status code.
+- On failure, the API should return an appropriate status code with error messages.
 
+#### Request Example:
+```http
+DELETE /api/organizations
+Content-Type: application/json
+Authorization: Bearer <token>
 
-
-### Built With
-
-
-* ExpressJs
-* TypeScript
-* PostgresSql
-* Prisma
-* Nodemailer
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## Folder Structure 
+{
+  "organizationId": "string"
+}
 
 ```
-|--- src
-|    |--- presentation
-|    |--- domain
-|    |--- infrastructure
-|    |--- features
-|    |    |--- auth
-|    |    |         |--- presentation
-|    |    |         |--- domain
-|    |    |         |--- infrastructure
-|    |    |--- users
-|    |    |--- organisations
-|    |    |--- notifications
-|    |    |--- messages
-|    |    |--- payments
-|    |    |--- emails
-|    |--- config
-|    |--- utils
-|    |--- data
-|    |--- server.ts
-|    |--- app.ts
-|--- .env
-|--- example.env
-|--- .gitignore
-|--- package.json
-|--- tsconfig.json
+
+#### Successful Response:
+
+204 No Content
+
+#### Error Response:
+
+```json
+{
+  "message": "Failed to delete organization",
+  "errors": [
+    "Invalid organization ID format"
+  ],
+  "status": 400
+}
 ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```json
+{
+  "message": "Failed to delete organization",
+  "errors": [
+    "User not authorized to delete this organization"
+  ],
+  "status": 401
+}
+```
 
+### Purpose
 
-## _Architecture Overview_
+Provides a backend service to handle the deletion of organizations, ensuring the organization ID is valid and removing the organization from the system.
 
-The application is structured into three distinct layers:
+### Requirements
 
-### 1. Presentation Layer
-  - handles external communication with various systems, including APIs, UI components, and HTTP/S requests.
+- Develop server-side logic to handle organization deletion requests.
+- Validate and sanitize incoming organization ID data.
+- Remove the specified organization upon successful validation of the organization ID.
+- Handle all related data according to the defined data retention policy.
 
-### 2. Domain Layer
- -  encapsulates the core business rules, entities, data transfer objects (DTOs), validation logic, and use cases.
+### Expected Outcome
 
-### 3. Infrastructure Layer
+The API endpoint allows users to delete an organization by providing the organization ID, ensuring the organization is removed from the system.
 
- - deals with external services and technical details.
+### Status Codes
 
-#### Additionally:
+- **204**: Organization was successfully deleted.
+- **400**:
+  - Invalid organization ID format
+  - Organization not found
+- **401**:
+  - User not allowed to perform this action
+- **500**: A server error occurred
 
- - The application follows the Vertical Slice technique, where each major feature or use case has its own dedicated folder structure.
+### Testing
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-### Prerequisites
-
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-* node version 20 or newer
-  
-  On Linux
-  ```sh
-  curl -fsSL https://fnm.vercel.app/install | bash 
-  ```
-  
-  ```sh
-  fnm use --install-if-missing 20
-  ```
-  
-  On MacOs
-  ```sh
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash 
-  ```
-  
-  ```sh
-  nvm install 20 
-  ```
-  On Windows
-   ```sh
-  winget install Schniz.fnm
-  ```
-  
-  ```sh
-  fnm use --install-if-missing 20
-  ```
-
-### How to Use
-
-1. Clone the repository.
-   ```sh
-   git clone
-   ```
-2. Install dependencies
-   ```sh
-   npm install
-   ```
-3. Create a .env file `.env` and add your credentials. A list of all env variables
-   can be found at the root of the project inside `example.env`
-
-4. Run the developement server using the following command
-   ```sh
-   npm run dev
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this repository as a baseline to streamline starting an express project.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are welcomed! NOTE: For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b fix/typoReadme`)
-3. Commit your Changes (`git commit -m 'Fixed a typo in the README file'`)
-4. Push to the Branch (`git push origin fix/typoReadme`)
-5. Open a Pull Request
-
-
-<!-- COMMIT CHEATSHEET -->
-
-### _Commit CheatSheet_
-
-| Type     |                          | Description                                                                                                 |
-| -------- | ------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| feat     | Features                 | A new feature                                                                                               |
-| fix      | Bug Fixes                | A bug fix                                                                                                   |
-| docs     | Documentation            | Documentation only changes                                                                                  |
-| refactor | Code Refactoring         | A code change that neither fixes a bug nor adds a feature                                                   |
-| perf     | Performance Improvements | A code change that improves performance                                                                     |
-| test     | Tests                    | Adding missing tests or correcting existing tests                                                           |
-| build    | Builds                   | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
-| ci       | Continuous Integrations  | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
-| chore    | Chores                   | Other changes that don't modify , backend or test files                                                     |
-| revert   | Reverts                  | Reverts a previous commit                                                                                   
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Heba Omar - [Twitter](https://twitter.com/jr_dev20) | [Linkedin](https://www.linkedin.com/in/heba-ismael-omar-645965252/) 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Inspired by Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [Built for HNG11 internship 2024](https://hng.tech)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+- Write unit tests to ensure the organization deletion endpoint validates input correctly and removes the organization from the system.
+- Test various scenarios for submitting the organization ID (e.g., valid ID, non-existent ID, malformed ID, etc.).
 
 
