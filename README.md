@@ -5,6 +5,16 @@ Este es el repositorio de la parte frontend del proyecto de Equipo 4. Aquí se e
 
 ## Equipo de desarrollo
 <div align="left">
+   <div style="display: inline-block; margin: 15px;">
+    <img src="https://avatars.githubusercontent.com/DanteNico1087" width="150" height="150" style="border-radius: 50%;" />
+    <h3>Dante Nicolás Caballero</h3>
+    <p>
+      <a href="http://github.com/DanteNico1087" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-181717.svg?style=for-the-badge&logo=GitHub&logoColor=white" height="30" />
+      </a>
+    </p>
+  </div>
+  
   <div style="display: inline-block; margin: 15px;">
     <img src="https://avatars.githubusercontent.com/OsvaldoRamirez97" width="150" height="150" style="border-radius: 50%;" />
     <h3>Osvaldo Ramirez</h3>
