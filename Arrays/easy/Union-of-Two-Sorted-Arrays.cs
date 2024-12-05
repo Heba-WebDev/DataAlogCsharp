@@ -72,3 +72,11 @@ public class Array
         return union;
     }
 }
+
+/*
+union[^1] retrieves the last element of the union list.
+The condition checks if:
+The union list is empty (union.Count == 0) — no elements added yet.
+The last added element (union[^1]) is not equal to the current value being processed (arr1[pointer1] or arr2[pointer2]).
+This ensures no duplicate values are added to the union list.
+*/
