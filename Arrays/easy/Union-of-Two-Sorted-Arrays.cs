@@ -33,6 +33,7 @@ public class Array
             if (arr1[pointer1] < arr2[pointer2])
             {
                 // Add element if not already in the list
+                // union[^1] is basically union[union.Length - 1], just newer syntax
                 if (union.Count == 0 || union[^1] != arr1[pointer1])
                     union.Add(arr1[pointer1]);
                 pointer1++;
