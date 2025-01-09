@@ -30,3 +30,20 @@ public class Array
         return maxProfit;
     }
 }
+
+/*
+Iterate through array:
+
+Day 0 (7): profit = 7-7 = 0, min = 7
+Day 1 (1): profit = 1-7 = -6, min updated to 1
+Day 2 (5): profit = 5-1 = 4, min stays 1, maxProfit becomes 4
+Day 3 (3): profit = 3-1 = 2, min stays 1
+Day 4 (6): profit = 6-1 = 5, min stays 1, maxProfit becomes 5
+Day 5 (4): profit = 4-1 = 3, min stays 1
+
+
+Return maxProfit = 5 (buy at 1, sell at 6)
+
+Time Complexity: O(n) - single pass through the array
+Space Complexity: O(1) - only using a few variables
+*/
