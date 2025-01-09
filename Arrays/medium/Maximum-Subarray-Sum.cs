@@ -40,6 +40,8 @@ public class Array
     }
 }
 
+// Time Complexity: O(n) and Space Complexity: O(1)
+
 // return sum and sub array variation
 public class Array
 {
@@ -92,3 +94,4 @@ public class Array
         return (max, subArray);
     }
 }
+// Time Complexity: O(n) and Space Complexity: O(n)
