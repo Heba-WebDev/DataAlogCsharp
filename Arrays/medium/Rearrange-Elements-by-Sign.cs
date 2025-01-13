@@ -52,3 +52,5 @@ public class Array
         return newArr;
     }
 }
+
+// Time Complexity: O(n) and Space Complexity: O(n)
