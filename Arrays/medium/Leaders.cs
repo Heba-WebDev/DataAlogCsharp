@@ -27,7 +27,7 @@ public class Array
                 leaders.Add(arr[i]);
             }
         }
-        leaders.Reverse(); // optinal 
+        leaders.Reverse(); // optinal
         return leaders.ToArray();
     }
 }
