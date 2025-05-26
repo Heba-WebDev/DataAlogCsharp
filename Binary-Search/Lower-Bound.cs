@@ -30,3 +30,8 @@ public static int LowerBound(int[] arr, int x)
 
 // Time Complexity --> O(log n)
 // Space Complexity --> O(1)
+
+/*
+NOTE: The loop guarantees that left ends up pointing to the first valid index,
+or the array’s end if none is valid.
+*/
