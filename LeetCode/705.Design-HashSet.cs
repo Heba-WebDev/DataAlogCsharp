@@ -71,7 +71,7 @@ public class MyHashSet
 
     private int GetBucketIndex(int key)
     {
-        return key % BucketSize;
+        return key % BucketSize; // hash function
     }
 
     public void Add(int key)
