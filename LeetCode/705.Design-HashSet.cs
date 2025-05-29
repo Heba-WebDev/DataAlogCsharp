@@ -57,7 +57,7 @@ public class MyHashSet
 
 public class MyHashSet
 {
-    private const int BucketSize = 759; // common prime used in hash tables
+    private const int BucketSize = 769;
     private List<int>[] buckets;
 
     public MyHashSet()
@@ -89,7 +89,7 @@ public class MyHashSet
         buckets[index].Remove(key);
     }
 
-    public void Contains(int key)
+    public bool Contains(int key)
     {
         int index = GetBucketIndex(key);
         return buckets[index].Contains(key);
