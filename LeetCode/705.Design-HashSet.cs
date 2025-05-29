@@ -57,7 +57,7 @@ public class MyHashSet
 
 public class MyHashSet
 {
-    private const int BucketSize = 769;
+    private const int BucketSize = 769; // common prime used in hash tables for this purpose
     private List<int>[] buckets;
 
     public MyHashSet()
