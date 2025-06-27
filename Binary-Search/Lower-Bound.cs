@@ -7,7 +7,7 @@ to a given key i.e. x.
 If no such index is found, return the size of the array.
 */
 
-public static int LowerBound(int[] arr, int x)
+static int LowerBound(int[] arr, int x)
 {
     int left = 0, right = arr.Length;
 

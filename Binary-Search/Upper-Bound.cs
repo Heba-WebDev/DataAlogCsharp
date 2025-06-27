@@ -5,7 +5,7 @@ smallest index in a sorted array where the value at that index is greater
 than a given key i.e. x.
 */
 
-public static int UpperBound(int[] arr, int x)
+static int UpperBound(int[] arr, int x)
 {
     int left = 0, right = arr.Length;
 
