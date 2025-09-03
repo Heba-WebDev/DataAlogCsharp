@@ -48,3 +48,6 @@ public class Solution
         return stack.Count == 0;
     }
 }
+
+// O(n) time complexity
+// O(n) space complexity
