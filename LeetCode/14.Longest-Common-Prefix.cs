@@ -10,27 +10,28 @@ public class Solution
     {
         if (strs == null || strs.Length == 0) return "";
 
-        string result = "";
-        string firstWord = strs[0];
+        string prefix = strs[0];
 
-        for (int i = 0; i < firstWord.Length; i++)
+        for (int i = 1; i < strs.Length; i++)
         {
-            char currentChar = firstWord[i];
-
-            for (int j = 1; j < strs.Length; j++)
+            while (!strs[i].StartsWith(prefix))
             {
-                if (i >= strs[j].Length || strs[j][i] != currentChar)
-                {
-                    return result;
-                }
+                prefix = prefix.Substring(0, prefix.Length - 1);
+                if (prefix == "") return "";
             }
-
-            result += currentChar;
         }
 
-        return result;
+        return prefix;
     }
 }
+
+/*
+Explanation: We start with the first string as the initial guess for the common prefix.
+Then we check it against each other string in the list.
+
+If the current string doesn’t start with that prefix, we shorten the prefix (remove characters
+from the end) until it matches — or until nothing is left.
+*/
 
 // Time Complexity: O(n) --> we loop every single character at worst case
 // Space Complexity: O(m) --> m being the length of the prefix
